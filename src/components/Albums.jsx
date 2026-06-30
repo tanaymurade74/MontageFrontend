@@ -105,7 +105,7 @@ const Albums = () => {
       );
       setEditAlbum(null);
     } catch (error) {
-      alert(error.response?.data?.error || "Failed to update album");
+      toast.error("Error while trying to edit album.")
     }
   };
 
@@ -126,7 +126,8 @@ const Albums = () => {
       getCreatedAlbums();
       toast.success(`Album shared with ${shareEmail}`)
     } catch (error) {
-      alert(error.response?.data?.error || "Failed to share album");
+    //   alert(error.response?.data?.error || "Failed to share album");
+    toast.error(`${shareEmail} has never signedUp for Montage`)
     }
   };
 
