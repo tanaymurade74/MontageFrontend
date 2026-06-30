@@ -406,7 +406,7 @@ const AlbumDetail = () => {
             >
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title text-truncate">
+                  <h5 className="modal-title">
                     {selectedImage.name}
                   </h5>
                   <button
