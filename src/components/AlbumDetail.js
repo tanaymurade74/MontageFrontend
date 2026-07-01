@@ -99,7 +99,7 @@ const AlbumDetail = () => {
       getImages();
       toast.success("Image uploaded");
     } catch (error) {
-      alert(error.response?.data?.message || "Upload failed");
+      toast.error(error.response?.data?.message || "Upload failed");
     } finally {
       setUploading(false);
     }
