@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Albums from './components/Albums';
 import AlbumDetail from './components/AlbumDetail';
 import axios from "axios";
+import OAuthSuccess from './components/OAuthSucess';
 axios.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) config.headers.Authorization = `Bearer ${token}`;
@@ -35,6 +36,7 @@ theme="light"
       <Route path = "/" element = {<Login/>}/>
       <Route path = "/albums" element = {<Albums/>}/>
       <Route path = "/album/:albumId" element = {<AlbumDetail/>}/>
+      <Route path = "/oauth-success" element = {<OAuthSuccess/>}/>
      </Routes>
     </div>
     </BrowserRouter>
