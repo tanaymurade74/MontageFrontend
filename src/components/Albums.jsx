@@ -132,16 +132,8 @@ const Albums = () => {
   };
 
   const handleLogOut = async () => {
-    try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/logout`, {
-        withCredentials: true,
-      });
-      if (response) {
-        navigate(`/`);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    localStorage.removeItem("token");
+    navigate("/");
   };
 
   useEffect(() => {
