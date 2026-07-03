@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# Montage – Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A photo gallery app. Sign in with Google, organize your photos into albums, upload images, tag and favorite them, leave comments, and share albums with others. Built with React and Bootstrap, backed by a REST API.
 
-## Available Scripts
+## Live Demo
 
-In the project directory, you can run:
+[Live Demo](https://montage-frontend.vercel.app/)
 
-### `npm start`
+## Quick Start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+git clone https://github.com/tanaymurade74/MontageFrontend.git
+cd MontageFrontend
+npm install
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Create a `.env` file in the project root, pointing at the backend:
 
-### `npm test`
+```env
+REACT_APP_API_URL=http://localhost:3000
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> Replace with your deployed [backend](https://github.com/tanaymurade74/MontageBackend) URL in production (e.g. `https://montagebackend.onrender.com`).
 
-### `npm run build`
+Then start the app:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technologies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* React JS
+* React Router
+* Bootstrap
+* Bootstrap Icons
+* Axios
+* React Toastify
+* Create React App
 
-### `npm run eject`
+## Features
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Authentication**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Sign in with Google
+* JWT token stored in the browser and sent with every request
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Albums**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* Create, view, and delete albums
+* Share albums with other users by email
+* View albums that have been shared with you
 
-## Learn More
+**Images**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Upload images to an album
+* Filter images by tags
+* Mark images as favorites and view a favorites-only gallery
+* Add comments to images
+* Delete images
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**General**
 
-### Code Splitting
+* Toast notifications for real-time feedback on actions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## API Reference
 
-### Analyzing the Bundle Size
+This app consumes the Montage backend REST API. The base URL is read from `REACT_APP_API_URL`, and a JWT token is sent in the `Authorization` header on every request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### GET /auth/login · GET /auth/me
+Start Google sign-in and fetch the current user.
 
-### Making a Progressive Web App
+### GET /albums · POST /album · DELETE /albums/:albumId
+List, create, and delete albums.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### POST /albums/:albumId/share · GET /albums/shared
+Share an album by email and view albums shared with you.
 
-### Advanced Configuration
+### POST /albums/:albumId/images · GET /albums/:albumId/images
+Upload images to an album and list them (with optional tag filtering).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### PATCH /albums/:albumId/images/:imageId/favorite · POST /albums/:albumId/images/:imageId/comments
+Toggle favorites and add comments on images.
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> Full endpoint list: see the [backend repository](https://github.com/tanaymurade74/MontageBackend).
